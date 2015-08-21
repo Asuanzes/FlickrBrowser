@@ -7,7 +7,7 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
-    String mNombre;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
