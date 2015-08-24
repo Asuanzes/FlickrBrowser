@@ -22,6 +22,7 @@ enum DownloadStatus {
     IDLE, PROCESSING, NOT_INITIALISED, FAILED_OR_EMPTY, OK
 }
 
+//Esta clase va a descargar la información, el JSON sin procesar (sin parsearlo)
 
 public class GetRawData {
 
@@ -52,38 +53,51 @@ public class GetRawData {
     }
 
 
-    public void execute(){
+    public void execute() {
 
         this.mDownloadStatus = DownloadStatus.PROCESSING;
         DownloadRawData downloadRawData = new DownloadRawData();
         downloadRawData.execute(mRawUrl);
 
+        //Introducido por mi para controlar el proceso del código
+        String status = getmDownloadStatus().toString();
+        Log.e("miSuperStatus", status);
+        Log.e("miSuperStatus", "En proceso de descarga");
 
     }
 
-                                                  //Params    Progress   Result
-    public class DownloadRawData extends AsyncTask <String,    Void,     String> {
-                                     //RESULT
+
+    //Params    Progress   Result
+    public class DownloadRawData extends AsyncTask<String, Void, String> {
+        //RESULT
         protected void onPostExecute(String webData) {
 
             mData = webData;
 
-            Log.v(LOG_TAG, "Data returnned: " + webData);
+            Log.v(LOG_TAG, "Data returnned: " + mData);
 
-            if (webData == null){
-                if (mRawUrl == null){
+            if (mData == null) {
+                if (mRawUrl == null) {
                     mDownloadStatus = DownloadStatus.NOT_INITIALISED;
-                }   else {
+                } else {
                     mDownloadStatus = DownloadStatus.FAILED_OR_EMPTY;
                 }
-            } else{
+            } else {
                 //succes
                 mDownloadStatus = DownloadStatus.OK;
+                Log.d("miSuperStatus", "Descarga finalizada");
             }
 
+            //Mostrando la longitud del JSON descargado
+            int mDataLength;
+
+            mDataLength = mData.length();
+
+            Log.d("miSuperStatus", "Su tamaño es de: " + mDataLength + " caracteres");
 
         }
-                                        //PARAMS
+
+        //PARAMS
         protected String doInBackground(String... params) {
             HttpURLConnection urlConnection = null;
             BufferedReader reader = null;
