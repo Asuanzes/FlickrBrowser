@@ -58,17 +58,19 @@ public class GetRawData {
         DownloadRawData downloadRawData = new DownloadRawData();
         downloadRawData.execute(mRawUrl);
 
+
     }
 
-
-    public class DownloadRawData extends AsyncTask<String, Void, String> {
-
+                                                  //Params    Progress   Result
+    public class DownloadRawData extends AsyncTask <String,    Void,     String> {
+                                     //RESULT
         protected void onPostExecute(String webData) {
 
             mData = webData;
-            Log.v(LOG_TAG, "Data returnned: " + mData);
 
-            if (mData == null){
+            Log.v(LOG_TAG, "Data returnned: " + webData);
+
+            if (webData == null){
                 if (mRawUrl == null){
                     mDownloadStatus = DownloadStatus.NOT_INITIALISED;
                 }   else {
@@ -81,7 +83,7 @@ public class GetRawData {
 
 
         }
-
+                                        //PARAMS
         protected String doInBackground(String... params) {
             HttpURLConnection urlConnection = null;
             BufferedReader reader = null;
