@@ -82,7 +82,9 @@ public class GetRawData {
                 } else {
                     mDownloadStatus = DownloadStatus.FAILED_OR_EMPTY;
                 }
-            } else {
+                // !Pero si mData no está vacío...¡ introducido por mí para ver
+                //función del símbolo "!"
+            } else if (!mData.isEmpty()) {
                 //succes
                 mDownloadStatus = DownloadStatus.OK;
                 Log.d("miSuperStatus", "Descarga finalizada");
