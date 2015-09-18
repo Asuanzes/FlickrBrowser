@@ -2,7 +2,6 @@ package es.tetexe.flickrbrowser;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -18,10 +17,7 @@ public class MainActivity extends AppCompatActivity {
                 new GetRawData("https://api.flickr.com/services/feeds/photos_public.gne?tags=android,lollipop&format=json&nojsoncallback=1");
         theData.execute();
 
-
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

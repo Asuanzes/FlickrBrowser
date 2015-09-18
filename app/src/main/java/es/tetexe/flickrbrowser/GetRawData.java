@@ -19,6 +19,11 @@ import java.net.URL;
 
 enum DownloadStatus {
 
+
+    /**
+     *  Idle = no está procesando nada, PROCESSING = descargando la información, NOT_INITIALISED = no hay una url válidad,
+     *  FAILED_OR_EMPTY = la información ha fallado en la descarga o no hay una información válida y OK = hay información válida
+     */
     IDLE, PROCESSING, NOT_INITIALISED, FAILED_OR_EMPTY, OK
 }
 
